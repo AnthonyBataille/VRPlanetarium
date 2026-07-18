@@ -539,6 +539,15 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""PauseMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""b4eeb14e-a2fa-4921-9e46-4f675c2363f5"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -946,6 +955,17 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Thumbstick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b74b301b-f343-4bb0-91e9-aed12d87742f"",
+                    ""path"": ""<XRController>{LeftHand}/menuButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -3118,6 +3138,28 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
                     ""action"": ""Click"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""067392fd-326e-4bf2-98d3-e60da946d48b"",
+                    ""path"": ""<XRController>{RightHand}/triggerPressed"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0a52a0a6-365e-4dd3-ac27-87ade2e7968a"",
+                    ""path"": ""<XRController>{LeftHand}/triggerPressed"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -3554,6 +3596,7 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
         m_XRILeft_GripPosition = m_XRILeft.FindAction("Grip Position", throwIfNotFound: true);
         m_XRILeft_GripRotation = m_XRILeft.FindAction("Grip Rotation", throwIfNotFound: true);
         m_XRILeft_Thumbstick = m_XRILeft.FindAction("Thumbstick", throwIfNotFound: true);
+        m_XRILeft_PauseMenu = m_XRILeft.FindAction("PauseMenu", throwIfNotFound: true);
         // XRI Left Interaction
         m_XRILeftInteraction = asset.FindActionMap("XRI Left Interaction", throwIfNotFound: true);
         m_XRILeftInteraction_Select = m_XRILeftInteraction.FindAction("Select", throwIfNotFound: true);
@@ -3915,6 +3958,7 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
     private readonly InputAction m_XRILeft_GripPosition;
     private readonly InputAction m_XRILeft_GripRotation;
     private readonly InputAction m_XRILeft_Thumbstick;
+    private readonly InputAction m_XRILeft_PauseMenu;
     /// <summary>
     /// Provides access to input actions defined in input action map "XRI Left".
     /// </summary>
@@ -3983,6 +4027,10 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
         /// </summary>
         public InputAction @Thumbstick => m_Wrapper.m_XRILeft_Thumbstick;
         /// <summary>
+        /// Provides access to the underlying input action "XRILeft/PauseMenu".
+        /// </summary>
+        public InputAction @PauseMenu => m_Wrapper.m_XRILeft_PauseMenu;
+        /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
         public InputActionMap Get() { return m_Wrapper.m_XRILeft; }
@@ -4050,6 +4098,9 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
             @Thumbstick.started += instance.OnThumbstick;
             @Thumbstick.performed += instance.OnThumbstick;
             @Thumbstick.canceled += instance.OnThumbstick;
+            @PauseMenu.started += instance.OnPauseMenu;
+            @PauseMenu.performed += instance.OnPauseMenu;
+            @PauseMenu.canceled += instance.OnPauseMenu;
         }
 
         /// <summary>
@@ -4103,6 +4154,9 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
             @Thumbstick.started -= instance.OnThumbstick;
             @Thumbstick.performed -= instance.OnThumbstick;
             @Thumbstick.canceled -= instance.OnThumbstick;
+            @PauseMenu.started -= instance.OnPauseMenu;
+            @PauseMenu.performed -= instance.OnPauseMenu;
+            @PauseMenu.canceled -= instance.OnPauseMenu;
         }
 
         /// <summary>
@@ -5692,6 +5746,13 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnThumbstick(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "PauseMenu" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPauseMenu(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "XRI Left Interaction" which allows adding and removing callbacks.

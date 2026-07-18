@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PauseManager : MonoBehaviour
+public class AnimationManager : MonoBehaviour
 {
     public InputActionReference menuButtonAction;
 
@@ -26,6 +26,16 @@ public class PauseManager : MonoBehaviour
     private void TogglePause(InputAction.CallbackContext ctx)
     {
         isPaused = !isPaused;
+
+        foreach (var rot in rotations)
+        {
+            rot.enabled = !isPaused;
+        }
+    }
+
+    public void SetPaused(bool paused)
+    {
+        isPaused = paused;
 
         foreach (var rot in rotations)
         {
