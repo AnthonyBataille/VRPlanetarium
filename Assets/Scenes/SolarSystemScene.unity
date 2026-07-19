@@ -845,7 +845,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1066352598}
   - {fileID: 1436245086}
   - {fileID: 1005902832}
   m_Father: {fileID: 951798264}
@@ -2910,10 +2909,11 @@ MonoBehaviour:
   pauseAction: {fileID: -172490037818780626, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   continuousMoveProvider: {fileID: 348849955}
   continuousTurnProvider: {fileID: 1997698083}
-  distanceFromCamera: 1.5
+  labelManager: {fileID: 1436245087}
+  animationManager: {fileID: 1005902833}
+  distanceFromCamera: 1
   verticalOffset: 0
   mainMenuSceneName: MainMenu
-  animationManager: {fileID: 1005902833}
 --- !u!1 &526044462
 GameObject:
   m_ObjectHideFlags: 0
@@ -6802,52 +6802,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3475118261464492563, guid: 9f3369e30fbd31f4bb596b1a99babe83, type: 3}
   m_PrefabInstance: {fileID: 1060284315}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1066352597
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1066352598}
-  - component: {fileID: 1066352599}
-  m_Layer: 0
-  m_Name: Label Input
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1066352598
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1066352597}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 82802998}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1066352599
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1066352597}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73f532a5b23370246bcd36fd23167f52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LabelInput
-  toggleLabelsAction: {fileID: 910917277175021238, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  labelManager: {fileID: 1436245087}
 --- !u!1 &1067237058
 GameObject:
   m_ObjectHideFlags: 0
@@ -8434,6 +8388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 187f8421a0ef34845a75f8d06d3a9f75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LabelManager
+  toggleLabelsAction: {fileID: 910917277175021238, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!1 &1441140064
 GameObject:
   m_ObjectHideFlags: 0
@@ -8615,6 +8570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 187f8421a0ef34845a75f8d06d3a9f75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LabelManager
+  toggleLabelsAction: {fileID: 0}
 --- !u!114 &1472956068
 MonoBehaviour:
   m_ObjectHideFlags: 0

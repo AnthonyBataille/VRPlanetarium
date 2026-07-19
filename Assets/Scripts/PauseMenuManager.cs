@@ -15,16 +15,16 @@ public class PauseMenuManager : MonoBehaviour
     [SerializeField] private Behaviour continuousMoveProvider;
     [SerializeField] private Behaviour continuousTurnProvider;
 
+    [Header("User input")]
+    [SerializeField] private LabelManager labelManager;
+    [SerializeField] private AnimationManager animationManager;
 
     [Header("Menu Placement")]
-    [SerializeField] private float distanceFromCamera = 1.5f;
+    [SerializeField] private float distanceFromCamera = 1.0f;
     [SerializeField] private float verticalOffset = 0.0f;
 
     [Header("Scene Navigation")]
     [SerializeField] private string mainMenuSceneName = "MainMenu";
-
-    [Header("Planet Animation")]
-    [SerializeField] private AnimationManager animationManager;
 
     private bool isPaused;
 
@@ -77,26 +77,26 @@ public class PauseMenuManager : MonoBehaviour
     public void Pause()
     {
         isPaused = true;
-        SetLocomotionEnabled(false);
-        PositionMenuInFrontOfCamera();
-        pauseMenuCanvas.SetActive(true);
-
         if (animationManager != null)
         {
             animationManager.SetPaused(true);
         }
+        SetLocomotionEnabled(false);
+        SetUserInputEnabled(false);
+        PositionMenuInFrontOfCamera();
+        pauseMenuCanvas.SetActive(true);
     }
 
     public void Resume()
     {
         isPaused = false;
         pauseMenuCanvas.SetActive(false);
-
+        SetLocomotionEnabled(true);
+        SetUserInputEnabled(true);
         if (animationManager != null)
         {
             animationManager.SetPaused(false);
         }
-        SetLocomotionEnabled(true);
     }
 
     public void BackToMainMenu()
@@ -117,6 +117,19 @@ public class PauseMenuManager : MonoBehaviour
         if (continuousTurnProvider != null)
         {
             continuousTurnProvider.enabled = enabled;
+        }
+    }
+
+    private void SetUserInputEnabled(bool enabled)
+    {
+        if (labelManager != null)
+        {
+            labelManager.enabled = enabled;
+        }
+
+        if (animationManager != null)
+        {
+            animationManager.enabled = enabled;
         }
     }
 
